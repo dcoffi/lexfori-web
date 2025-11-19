@@ -1193,7 +1193,30 @@ strong {
   pointer-events: none;
   animation: brandShine 3.5s linear infinite;
 }
+.page-header {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+}
 
+.page-header h1 {
+  margin: 0 0 0.5rem;
+}
+
+.reels-grid {
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  padding: 0 1rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Centrar cada embed de Instagram */
+.reels-grid blockquote.instagram-media {
+  margin: 0 auto !important;
+}
 @keyframes brandShine {
   0% {
     left: -120%;
@@ -1201,4 +1224,6 @@ strong {
   100% {
     left: 140%;
   }
+
+  
 }

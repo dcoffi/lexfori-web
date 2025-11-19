@@ -199,6 +199,91 @@
 
     // Dejar "Inicio" activo al cargar
     $('.navbar-nav .nav-link[href="#section_1"]').addClass('active');
+
+    /* ============================
+       INSTAGRAM: CARRUSEL CON OWL
+       ============================ */
+
+    // Array de URLs de publicaciones públicas de Instagram.
+    // Puedes seguir usando las que ya tienes; limpio el "?utm_..." en JS.
+    var instagramMedia = [
+      "https://www.instagram.com/p/DPRS5pHjSWd/",
+      "https://www.instagram.com/p/DPRRC2EDS6M/",
+      "https://www.instagram.com/p/DPRSH7iDfXN/",
+      "https://www.instagram.com/p/DPRTvewDTAN/",
+      "https://www.instagram.com/p/DPT11FJDcyU/",
+      "https://www.instagram.com/p/DPdssUzjfDS/",
+      "https://www.instagram.com/p/DP1NYW0jR3y/",
+      "https://www.instagram.com/p/DP1NzmbDd23/",
+      "https://www.instagram.com/p/DOzBrHIjzHW/",
+      "https://www.instagram.com/p/DPekdV4id17/"
+    ];
+
+    function renderInstagramMediaCarousel() {
+      var $carousel = $('#instagram-carousel');
+      if (!$carousel.length) {
+        return;
+      }
+
+      // Limpiar por si acaso
+      $carousel.empty();
+
+      instagramMedia.forEach(function (rawUrl) {
+        // Si pegaste URLs con parámetros (?utm_source=...), las limpio
+        var cleanUrl = String(rawUrl).split('?')[0];
+
+        // Contenedor del slide
+        var $item = $('<div class="instagram-slide"></div>');
+
+        // Blockquote que requiere Instagram para el embed
+        var blockquote = document.createElement("blockquote");
+        blockquote.className = "instagram-media";
+        blockquote.dataset.instgrmPermalink = cleanUrl;
+        blockquote.dataset.instgrmVersion = "14";
+
+        // Opcional: estilo tipo tarjeta
+        blockquote.style.background = "#fff";
+        blockquote.style.borderRadius = "8px";
+        blockquote.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.08)";
+
+        $item.append(blockquote);
+        $carousel.append($item);
+      });
+
+      // Procesar embeds de Instagram
+      if (window.instgrm &&
+          window.instgrm.Embeds &&
+          typeof window.instgrm.Embeds.process === "function") {
+        window.instgrm.Embeds.process();
+      }
+
+      // Inicializar Owl Carousel para Instagram
+      $carousel.owlCarousel({
+        items: 1,
+        loop: true,
+        dots: false,
+        nav: true,
+        autoplay: true,
+        margin: 20,
+        responsive: {
+          0:   { items: 1 },
+          768: { items: 1 },
+          1200:{ items: 2 } // si quieres ver 2 en pantallas grandes, ajustable
+        }
+      });
+    }
+
+    // Pintar carrusel de Instagram al cargar DOM
+    renderInstagramMediaCarousel();
+
+    // Refuerzo: al finalizar toda la carga, por si embed.js entró más tarde
+    window.addEventListener("load", function () {
+      if (window.instgrm &&
+          window.instgrm.Embeds &&
+          typeof window.instgrm.Embeds.process === "function") {
+        window.instgrm.Embeds.process();
+      }
+    });
   });
 
 })(window.jQuery);
