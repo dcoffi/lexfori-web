@@ -170,34 +170,43 @@
       </section>
 
       <section class="featured-section section-padding">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-5 col-12">
-              <div class="custom-block featured-custom-block">
-                <h2 class="mt-2 mb-4">Horario de Atención</h2>
+  <div class="container">
+    <div class="row g-4 align-items-start">
+      
+      <!-- Columna: Horario -->
+      <div class="col-12 col-lg-5">
+        <div class="custom-block featured-custom-block h-100">
+          <h2 class="mt-2 mb-4">Horario de Atención</h2>
 
-                <div class="d-flex">
-                  <i class="featured-icon bi-clock me-3"></i>
-
-                  <div>
-                    <p class="mb-2">
-                      Lunes a Viernes ~
-                      <strong class="d-inline"> 8:00 AM - 6:00 PM </strong>
-                    </p>
-
-                    <p class="mb-2">
-                      Sábados ~
-                      <strong class="d-inline"> 10:00 AM - 6:00 PM </strong>
-                    </p>
-
-                    <p>Domingos ~ Descanso</p>
-                  </div>
-                </div>
-              </div>
+          <div class="d-flex">
+            <i class="featured-icon bi-clock me-3"></i>
+            <div>
+              <p class="mb-2">Lunes a Viernes ~ <strong class="d-inline">8:00 AM - 6:00 PM</strong></p>
+              <p class="mb-2">Sábados ~ <strong class="d-inline">10:00 AM - 6:00 PM</strong></p>
+              <p>Domingos ~ Descanso</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      <!-- Columna: Instagram -->
+      <div class="col-12 col-lg-7">
+        <header class="custom-block featured-custom-block h-100">
+          <h2 class="mt-2 mb-2">Publicaciones de Instagram</h2>
+          <p class="mb-0">Reels y fotos seleccionados de la cuenta.</p>
+        </header>
+
+        <main>
+          <!-- Aquí se pintará todo lo que venga en el array -->
+          <div id="instagram-carousel" class="owl-carousel instagram-carousel custom-block featured-custom-block h-100"></div>
+
+        </main>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       <!-- Eliminada la sección completa de Shop (shop-section / section_3) -->
 
@@ -731,6 +740,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.backstretch.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
+<script async src="https://www.instagram.com/embed.js"></script>
 
 <!-- SOLO un Bootstrap: el bundle 5.3.3 (incluye Popper y Collapse) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
